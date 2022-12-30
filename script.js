@@ -44,9 +44,8 @@ function playRound(computerSelection, playerSelection) {
 }
 
 function selectItem(e) {
-    let playerSelection = this.textContent;
+    let playerSelection = this.id;
     let computerSelection = getComputerChoice();
-    console.log(`player: ${playerSelection}   computer: ${computerSelection}`);
     logCurrent(playRound(computerSelection, playerSelection));
 }
 
@@ -79,24 +78,8 @@ function determineWinner() {
         result = "Tie in the end!";
     }
     scoreBox.textContent = result;
-    playerWins, computerWins, rounds = 0;
+    playerWins = 0; 
+    computerWins = 0;
+    rounds = 0;
+
 }
-
-
-// function game() {
-    
-//     playerWins, computerWins = 0;
-//     for (let i = 0; i < 5; i++) {
-//         let playerSelection = prompt("Please choose your weapon!");
-//         let computerSelection = getComputerChoice();
-//         console.log(`You chose ${playerSelection}, computer chose ${computerSelection}.
-//             ${playRound(computerSelection, playerSelection)}`);
-//     }
-
-//     if (playerWins > computerWins) {
-//         console.log("You won in the end! Wins: " + playerWins);
-//     } else {
-//         console.log("Looks like you lost... :(  Wins: " + playerWins);
-//     }
-
-// }
