@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.buttons {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+}
+
+button {
+    height: 200px;
+    width: 200px;
+}
+
+.score, .currentRound, .rounds {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.score {
+    background-color: lightblue;
+    height: 50px;
+}
+
+.currentRound {
+    background-color: lightcoral;
+    height: 100px;
+}
+
+.rounds {
+    background-color: lightgoldenrodyellow;
+    height: 30px;
+}

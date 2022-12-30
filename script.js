@@ -1,5 +1,6 @@
 let playerWins = 0;
 let computerWins = 0;
+let rounds = 0;
 
 const choices = new Map([
     [0, "Rock"],
@@ -16,7 +17,7 @@ function getComputerChoice() {
 }
 
 function playRound(computerSelection, playerSelection) {
-    let result = "did not work";
+    rounds++;
     difference = choices.get(computerSelection.toLowerCase()) - choices.get(playerSelection.toLowerCase());
     if (Math.abs(difference) == 1) {
         if (difference < 0) {
@@ -41,6 +42,46 @@ function playRound(computerSelection, playerSelection) {
     return result;
 
 }
+
+function selectItem(e) {
+    let playerSelection = this.textContent;
+    let computerSelection = getComputerChoice();
+    console.log(`player: ${playerSelection}   computer: ${computerSelection}`);
+    logCurrent(playRound(computerSelection, playerSelection));
+}
+
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', selectItem));
+
+const currentRound = document.querySelector('.currentRound');
+const scoreBox = document.querySelector('.score');
+
+const roundsBox = document.querySelector('.rounds');
+
+function logCurrent(result) {
+    currentRound.textContent = result;
+    let score = `Player Wins: ${playerWins} Computer Wins: ${computerWins}`;
+    scoreBox.textContent = score;
+    roundsBox.textContent = "Rounds: " + rounds;
+    if (rounds == 5) {
+        determineWinner();
+    }
+}
+
+function determineWinner() {
+    let result;
+    if (playerWins > computerWins) {
+        result = "You are the final winner!";
+    } else if (computerWins > playerWins) {
+        result = "You lost... computer wins";
+    } else {
+        result = "Tie in the end!";
+    }
+    scoreBox.textContent = result;
+    playerWins, computerWins, rounds = 0;
+}
+
 
 // function game() {
     
